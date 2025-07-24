@@ -5,6 +5,7 @@ import type { Metadata } from "next"
 import Script from "next/script"
 
 import { ThemeProvider } from "@/components/theme-provider"
+import { WhatsAppButton } from "@/components/whatsapp-button" // Import the new component
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
+          <WhatsAppButton /> {/* Add the WhatsApp button here */}
         </ThemeProvider>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-JCL6F3187L" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
