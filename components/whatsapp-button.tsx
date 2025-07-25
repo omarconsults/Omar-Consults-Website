@@ -1,25 +1,22 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
+// Removed: import Link from "next/link"
 
-export function WhatsAppButton() {
-  const phoneNumber = "2348033000000" // Replace with Omar's actual WhatsApp number
+export default function WhatsAppButton() {
+  const phoneNumber = "+2349066414474" // Your WhatsApp number
   const prefilledMessage = encodeURIComponent("Hello, I got your number from Omarconsults.ng and I am interested in..")
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${prefilledMessage}`
 
   return (
-    <Button asChild className="fixed bottom-4 right-4 z-50 rounded-full p-3 shadow-lg" variant="default" size="icon">
-      <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-        <Image
-          src="/whatsapp-logo.svg" // Assuming you have a WhatsApp logo SVG in your public folder
-          alt="WhatsApp"
-          width={24}
-          height={24}
-          className="h-6 w-6"
-        />
-        <span className="sr-only">Chat on WhatsApp</span>
-      </a>
-    </Button>
+    <a // Changed from Link to a
+      href={whatsappLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center rounded-full bg-[#25D366] p-3 shadow-lg transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
+      aria-label="Chat with us on WhatsApp"
+    >
+      <Image src="https://img.icons8.com/?size=100&id=QkXeKixybttw&format=png&color=000000" alt="WhatsApp" width={32} height={32} className="h-8 w-8" />
+    </a> // Changed from Link to a
   )
 }

@@ -6,75 +6,12 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu"
+// Removed NavigationMenu imports as it's now in Header component
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/images/omar-logo.png"
-                alt="Omar Consults"
-                width={200}
-                height={70}
-                className="h-8 w-auto sm:h-10 md:h-12 lg:h-14 transition-all duration-300 filter brightness-110 contrast-125"
-                priority
-              />
-            </Link>
-            <NavigationMenu>
-              <NavigationMenuList className="flex-col sm:flex-row">
-                <NavigationMenuItem>
-                  <Link href="/" legacyBehavior passHref>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                      Home
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/services" legacyBehavior passHref>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                      Services
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/about" legacyBehavior passHref>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                      About
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/booking" legacyBehavior passHref>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                      Book Consultation
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-            <Link href="/booking" className="hidden sm:block">
-              <Button size="sm" className="text-xs md:text-sm">
-                Book Consultation
-              </Button>
-            </Link>
-            <Link href="/booking" className="sm:hidden">
-              <Button size="sm" className="text-xs px-2">
-                Book
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+      {/* Header is now in app/layout.tsx */}
 
       {/* Hero Section */}
       <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
@@ -250,92 +187,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-background border-t">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
-            <div className="space-y-4">
-              <Image
-                src="/images/omar-logo.png"
-                alt="Omar Consults"
-                width={160}
-                height={50}
-                className="h-8 w-auto mx-auto md:mx-0 filter brightness-110"
-              />
-              <p className="text-sm text-muted-foreground">
-                Empowering businesses with innovative technology solutions
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/" className="text-sm text-muted-foreground hover:text-primary">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className="text-sm text-muted-foreground hover:text-primary">
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="text-sm text-muted-foreground hover:text-primary">
-                    About
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/services" className="text-sm text-muted-foreground hover:text-primary">
-                    AI Solutions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className="text-sm text-muted-foreground hover:text-primary">
-                    Custom Software
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className="text-sm text-muted-foreground hover:text-primary">
-                    Cloud Solutions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className="text-sm text-muted-foreground hover:text-primary">
-                    Digital Marketing
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2">
-                <li className="text-sm text-muted-foreground">Benin City, Nigeria</li>
-                <li>
-                  <Link
-                    href="mailto:contact@omarconsults.ng"
-                    className="text-sm text-muted-foreground hover:text-primary"
-                  >
-                    contact@omarconsults.ng
-                  </Link>
-                </li>
-                <li>
-                  <Link href="tel:+2349066414474" className="text-sm text-muted-foreground hover:text-primary">
-                    +234 906 641 4474
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-6 border-t text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Omar Consults. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      {/* Footer is now in app/layout.tsx */}
     </div>
   )
 }
