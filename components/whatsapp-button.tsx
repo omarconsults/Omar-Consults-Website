@@ -1,34 +1,25 @@
-"use client" // Added this directive
-
-import Link from "next/link"
-import { MessageCircle } from "lucide-react"
+"use client"
 
 import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import Image from "next/image"
 
 export function WhatsAppButton() {
-  // Replace with your actual WhatsApp number, including country code
-  const whatsappNumber = "2349066414474"
-  const whatsappLink = `https://wa.me/${whatsappNumber}`
+  const phoneNumber = "2348033000000" // Replace with Omar's actual WhatsApp number
+  const prefilledMessage = encodeURIComponent("Hello, I got your number from Omarconsults.ng and I am interested in..")
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${prefilledMessage}`
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              asChild
-              size="icon"
-              className="h-14 w-14 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#1DA851] focus-visible:ring-[#25D366]"
-            >
-              <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-                <MessageCircle className="h-8 w-8" />
-              </Link>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="left">Chat on WhatsApp</TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    </div>
+    <Button asChild className="fixed bottom-4 right-4 z-50 rounded-full p-3 shadow-lg" variant="default" size="icon">
+      <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+        <Image
+          src="/whatsapp-logo.svg" // Assuming you have a WhatsApp logo SVG in your public folder
+          alt="WhatsApp"
+          width={24}
+          height={24}
+          className="h-6 w-6"
+        />
+        <span className="sr-only">Chat on WhatsApp</span>
+      </a>
+    </Button>
   )
 }
