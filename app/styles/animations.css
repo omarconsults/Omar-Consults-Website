@@ -1,128 +1,116 @@
-/* Animation keyframes */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
+@keyframes scroll {
+  0% {
     transform: translateX(0);
   }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  53%,
-  80%,
   100% {
-    transform: translate3d(0, 0, 0);
-  }
-  40%,
-  43% {
-    transform: translate3d(0, -30px, 0);
-  }
-  70% {
-    transform: translate3d(0, -15px, 0);
-  }
-  90% {
-    transform: translate3d(0, -4px, 0);
+    transform: translateX(-50%);
   }
 }
 
-/* Animation classes */
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+.animate-scroll {
+  animation: scroll 30s linear infinite;
 }
 
-.animate-slide-in-left {
-  animation: slideInLeft 0.6s ease-out;
+.animate-scroll:hover {
+  animation-play-state: paused;
 }
 
-.animate-slide-in-right {
-  animation: slideInRight 0.6s ease-out;
+.gradient-mask {
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
 
-.animate-scale-in {
-  animation: scaleIn 0.5s ease-out;
+/* New Floating Animations */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  66% {
+    transform: translateY(10px) translateX(-5px);
+  }
 }
 
-.animate-bounce-custom {
-  animation: bounce 2s infinite;
+@keyframes float-medium {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) translateX(15px) rotate(180deg);
+  }
 }
 
-/* Stagger animations */
-.animate-stagger > * {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+@keyframes float-fast {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-15px) translateX(-10px) scale(1.1);
+  }
+  50% {
+    transform: translateY(-25px) translateX(20px) scale(0.9);
+  }
+  75% {
+    transform: translateY(-10px) translateX(-15px) scale(1.05);
+  }
 }
 
-.animate-stagger > *:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.animate-stagger > *:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.animate-stagger > *:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.animate-stagger > *:nth-child(4) {
-  animation-delay: 0.4s;
-}
-.animate-stagger > *:nth-child(5) {
-  animation-delay: 0.5s;
-}
-.animate-stagger > *:nth-child(6) {
-  animation-delay: 0.6s;
+@keyframes gradient-x {
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
 }
 
-/* Hover animations */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
-.hover-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+@keyframes fade-in-out {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }
 
-.hover-scale {
-  transition: transform 0.3s ease;
+/* Animation Classes */
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
 }
 
-.hover-scale:hover {
-  transform: scale(1.05);
+.animate-float-medium {
+  animation: float-medium 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 4s ease-in-out infinite;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-fade-in-out {
+  animation: fade-in-out 3s ease-in-out infinite;
 }

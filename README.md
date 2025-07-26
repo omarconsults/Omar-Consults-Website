@@ -1,53 +1,30 @@
-# Omar Business Consulting Website
+# Omar Business consulting Websit
 
-A modern, responsive business consulting website built with Next.js 14, TypeScript, and Tailwind CSS.
+*Automatically synced with your [v0.dev](https://v0.dev) deployments*
 
-## Features
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/omarconsults-projects/v0-omar-business-consulting-websit)
+[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/NOORwg1mvFT)
 
-- **Modern Design**: Clean, professional layout with responsive design
-- **Performance Optimized**: Built with Next.js 14 App Router for optimal performance
-- **Accessibility**: WCAG compliant with proper semantic HTML and ARIA labels
-- **SEO Friendly**: Optimized meta tags and structured data
-- **Contact Forms**: Integrated contact and booking forms
-- **Admin Dashboard**: Booking management system
-- **WhatsApp Integration**: Direct messaging capability
+## Overview
 
-## Tech Stack
-
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
-- **Icons**: Lucide React
-- **Forms**: React Hook Form with Zod validation
-
-## Getting Started
-
-1. Clone the repository
-2. Install dependencies:
-   \`\`\`bash
-   npm install
-   \`\`\`
-3. Run the development server:
-   \`\`\`bash
-   npm run dev
-   \`\`\`
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Project Structure
-
-\`\`\`
-├── app/                    # Next.js App Router pages
-├── components/            # Reusable UI components
-├── lib/                   # Utility functions
-├── public/               # Static assets
-└── styles/               # Global styles
-\`\`\`
+This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
+Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
 
 ## Deployment
 
-This project is optimized for deployment on Vercel. Simply connect your repository to Vercel for automatic deployments.
+Your project is live at:
 
-## License
+**[https://vercel.com/omarconsults-projects/v0-omar-business-consulting-websit](https://vercel.com/omarconsults-projects/v0-omar-business-consulting-websit)**
 
-© 2024 Omar Business Consulting. All rights reserved.
+## Build your app
+
+Continue building your app on:
+
+**[https://v0.dev/chat/projects/NOORwg1mvFT](https://v0.dev/chat/projects/NOORwg1mvFT)**
+
+## How It Works
+
+1. Create and modify your project using [v0.dev](https://v0.dev)
+2. Deploy your chats from the v0 interface
+3. Changes are automatically pushed to this repository
+4. Vercel deploys the latest version from this repository
