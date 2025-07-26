@@ -228,22 +228,50 @@ export default function Home() {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-6 md:space-y-8 bg-card p-6 rounded-lg shadow-md"
+              className="space-y-6 md:space-y-8"
             >
-              <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6">About Omar Consults</h2>
-              <p className="text-base md:text-lg text-muted-foreground mb-6">
-                We are a forward-thinking technology consulting firm specialized in Software Development, Digital
-                Marketing, Artificial Intelligence (AI) Solutions, and Digital Transformation.
-              </p>
-              <p className="text-base md:text-lg text-muted-foreground mb-8">
-                We believe that every business, regardless of size, deserves access to world-class technology solutions
-                that drive growth, efficiency, and innovation. Our team of experts combines deep technical knowledge
-                with strategic business insight to deliver results that matter.
-              </p>
-              <p className="text-base md:text-lg text-muted-foreground mb-8">
-                Our mission is to empower businesses by delivering cutting-edge solutions that address unique
-                challenges, enhance operational efficiency, and foster innovation.
-              </p>
+              <div>
+                <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6">About Omar Consults</h2>
+                <p className="text-base md:text-lg text-muted-foreground mb-6">
+                  We are a forward-thinking technology consulting firm specialized in Software Development, Digital
+                  Marketing, Artificial Intelligence (AI) Solutions, and Digital Transformation.
+                </p>
+                <p className="text-base md:text-lg text-muted-foreground mb-8">
+                  We believe that every business, regardless of size, deserves access to world-class technology
+                  solutions that drive growth, efficiency, and innovation. Our team of experts combines deep technical
+                  knowledge with strategic business insight to deliver results that matter.
+                </p>
+                <p className="text-base md:text-lg text-muted-foreground mb-8">
+                  Our mission is to empower businesses by delivering cutting-edge solutions that address unique
+                  challenges, enhance operational efficiency, and foster innovation.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-8">
+                <div className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">500+</div>
+                  <div className="text-sm sm:text-base text-muted-foreground">Projects Completed</div>
+                </div>
+
+                <div className="text-center">
+                  <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">24/7</div>
+                  <div className="text-sm sm:text-base text-muted-foreground">Support Available</div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/about">
+                  <Button size="lg" className="bg-primary text-white hover:bg-primary/90 w-full sm:w-auto">
+                    Learn More About Us
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/booking">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent">
+                    Book Consultation
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
 
             <motion.div
