@@ -23,7 +23,6 @@ import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
-// Removed NavigationMenu imports as it's now in Header component
 import "./styles/animations.css"
 
 export default function Home() {
@@ -48,20 +47,18 @@ export default function Home() {
 
   return (
     <div ref={containerRef}>
-      {/* Header is now in app/layout.tsx */}
-
       {/* Hero Section */}
       <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-purple-900 via-blue-900 to-black">
         <motion.div
           style={{ opacity, scale }}
-          className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 pb-16 relative z-10"
+          className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-16 relative z-10"
         >
-          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-16">
+          <div className="max-w-4xl mx-auto text-center mb-6 sm:mb-8 md:mb-16">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight"
             >
               We work for your profit
             </motion.h1>
@@ -69,7 +66,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 px-4"
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-4 sm:mb-6 md:mb-8 px-2 sm:px-4 leading-relaxed"
             >
               We specialize in AI solutions, custom software development, and comprehensive technology solutions
             </motion.p>
@@ -77,19 +74,22 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2 sm:px-4"
             >
-              <Link href="/services">
-                <Button size="lg" className="bg-white text-black hover:bg-gray-100 w-full sm:w-auto">
+              <Link href="/services" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  className="bg-white text-black hover:bg-gray-100 w-full sm:w-auto text-sm sm:text-base"
+                >
                   Explore Our Services
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/booking">
+              <Link href="/booking" className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-white border-white hover:bg-white/10 w-full sm:w-auto bg-transparent"
+                  className="text-white border-white hover:bg-white/10 w-full sm:w-auto bg-transparent text-sm sm:text-base"
                 >
                   Book Consultation
                 </Button>
@@ -100,7 +100,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="relative max-w-5xl mx-auto"
+            className="relative max-w-5xl mx-auto px-4"
           >
             <Image
               src="https://i.ibb.co/5gc10p3f/undraw-online-resume-qyys-2.png"
@@ -111,44 +111,46 @@ export default function Home() {
             />
           </motion.div>
         </motion.div>
-        <div className="absolute bottom-0 left-0 right-0 text-center pb-8">
-          <ChevronDown className="w-6 h-6 text-white animate-bounce mx-auto" />
+        <div className="absolute bottom-4 sm:bottom-8 left-0 right-0 text-center">
+          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-white animate-bounce mx-auto" />
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-[#020817] via-background to-background">
+      <section className="py-8 sm:py-12 md:py-20 bg-gradient-to-b from-[#020817] via-background to-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Our Services</h2>
-            <p className="text-base md:text-lg text-muted-foreground"></p>
+          <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4">Our Services</h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground"></p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative p-6 sm:p-8 rounded-lg bg-card hover:bg-card/80 transition-all border"
+                className="group relative p-4 sm:p-6 md:p-8 rounded-lg bg-card hover:bg-card/80 transition-all border"
               >
-                <div className="mb-4 sm:mb-6">
-                  <service.icon className="w-10 h-10 sm:w-12 sm:h-12 text-primary" />
+                <div className="mb-3 sm:mb-4 md:mb-6">
+                  <service.icon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{service.title}</h3>
-                <p className="text-sm sm:text-base text-muted-foreground mb-4">{service.description}</p>
-                <ul className="space-y-2 mb-6">
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3">{service.title}</h3>
+                <p className="text-xs sm:text-sm md:text-base text-muted-foreground mb-3 sm:mb-4">
+                  {service.description}
+                </p>
+                <ul className="space-y-1 sm:space-y-2 mb-4 sm:mb-6">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center text-sm">
-                      <ArrowRight className="w-4 h-4 mr-2 text-primary" />
-                      {feature}
+                    <li key={i} className="flex items-center text-xs sm:text-sm">
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-primary flex-shrink-0" />
+                      <span className="leading-tight">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <Link href="/services">
-                  <Button variant="ghost" className="group-hover:translate-x-2 transition-transform">
+                  <Button variant="ghost" className="group-hover:translate-x-2 transition-transform text-xs sm:text-sm">
                     Learn More
-                    <ArrowUpRight className="w-4 h-4 ml-2" />
+                    <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2" />
                   </Button>
                 </Link>
               </motion.div>
@@ -158,39 +160,17 @@ export default function Home() {
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 bg-gradient-to-br from-[#020817] via-[#1a1f2e] to-[#020817] relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Floating Orbs */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float-slow"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 bg-purple-500/10 rounded-full blur-xl animate-float-medium"></div>
-          <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-blue-500/10 rounded-full blur-xl animate-float-fast"></div>
-          <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-primary/10 rounded-full blur-xl animate-float-slow"></div>
-
-          {/* Animated Grid Lines */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-pulse-slow"></div>
-            <div className="grid grid-cols-12 h-full">
-              {[...Array(12)].map((_, i) => (
-                <div
-                  key={i}
-                  className="border-r border-primary/10 animate-fade-in-out"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                ></div>
-              ))}
-            </div>
-          </div>
-
-          {/* Moving Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-purple-500/5 animate-gradient-x"></div>
-        </div>
-
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#020817] via-[#1a1f2e] to-[#020817] relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white bg-clip-text">Industries We Serve</h2>
-            <p className="text-lg text-gray-400">Delivering innovative solutions across various sectors</p>
+          <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-2 sm:mb-4 text-white">
+              Industries We Serve
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-400">
+              Delivering innovative solutions across various sectors
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {industries.map((industry, index) => (
               <motion.div
                 key={industry.name}
@@ -199,18 +179,16 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative"
               >
-                <div className="relative p-6 sm:p-8 rounded-2xl bg-[#0a101f]/40 border border-gray-800/50 backdrop-blur-sm hover:bg-[#0a101f]/60 transition-all duration-300">
-                  <div className="mb-4 sm:mb-6 relative">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#1a1f2e] flex items-center justify-center relative group-hover:scale-110 transition-transform duration-300">
-                      <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl group-hover:bg-primary/30 transition-all duration-300" />
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <industry.icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary relative z-10" />
+                <div className="relative p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-[#0a101f]/40 border border-gray-800/50 backdrop-blur-sm hover:bg-[#0a101f]/60 transition-all duration-300">
+                  <div className="mb-2 sm:mb-3 md:mb-4 lg:mb-6 relative">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full bg-[#1a1f2e] flex items-center justify-center relative group-hover:scale-110 transition-transform duration-300">
+                      <industry.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-primary relative z-10" />
                     </div>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mb-1 sm:mb-2 lg:mb-3 text-white group-hover:text-primary transition-colors duration-300">
                     {industry.name}
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                  <p className="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-tight">
                     {industry.description}
                   </p>
                 </div>
@@ -221,26 +199,28 @@ export default function Home() {
       </section>
 
       {/* About Company Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-[#020817] via-background to-background">
+      <section className="py-8 sm:py-12 md:py-20 bg-gradient-to-b from-[#020817] via-background to-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-6 md:space-y-8 bg-card p-6 rounded-lg shadow-md"
+              className="space-y-4 sm:space-y-6 md:space-y-8 bg-card p-4 sm:p-6 rounded-lg shadow-md order-2 lg:order-1"
             >
-              <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 md:mb-6">About Omar Consults</h2>
-              <p className="text-base md:text-lg text-muted-foreground mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6">
+                About Omar Consults
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
                 We are a forward-thinking technology consulting firm specialized in Software Development, Digital
                 Marketing, Artificial Intelligence (AI) Solutions, and Digital Transformation.
               </p>
-              <p className="text-base md:text-lg text-muted-foreground mb-8">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 sm:mb-6 md:mb-8 leading-relaxed">
                 We believe that every business, regardless of size, deserves access to world-class technology solutions
                 that drive growth, efficiency, and innovation. Our team of experts combines deep technical knowledge
                 with strategic business insight to deliver results that matter.
               </p>
-              <p className="text-base md:text-lg text-muted-foreground mb-8">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 sm:mb-6 md:mb-8 leading-relaxed">
                 Our mission is to empower businesses by delivering cutting-edge solutions that address unique
                 challenges, enhance operational efficiency, and foster innovation.
               </p>
@@ -250,7 +230,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="relative mt-8 lg:mt-0"
+              className="relative order-1 lg:order-2"
             >
               <div className="relative rounded-2xl overflow-hidden">
                 <Image
@@ -258,17 +238,17 @@ export default function Home() {
                   alt="Omar Consults Team"
                   width={600}
                   height={400}
-                  className="w-full h-[300px] sm:h-[400px] object-cover"
+                  className="w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[400px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
 
-              {/* Floating cards */}
-              <div className="absolute -top-4 sm:-top-8 -right-4 sm:-right-8 bg-white dark:bg-card p-4 sm:p-6 rounded-xl shadow-lg border">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-full flex items-center justify-center">
+              {/* Floating cards - Hidden on mobile for cleaner look */}
+              <div className="hidden sm:block absolute -top-2 sm:-top-4 md:-top-8 -right-2 sm:-right-4 md:-right-8 bg-white dark:bg-card p-3 sm:p-4 md:p-6 rounded-xl shadow-lg border">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <svg
-                      className="w-5 h-5 sm:w-6 sm:h-6 text-primary"
+                      className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -282,17 +262,17 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-semibold text-sm sm:text-base">Innovation First</div>
+                    <div className="font-semibold text-xs sm:text-sm md:text-base">Innovation First</div>
                     <div className="text-xs sm:text-sm text-muted-foreground">Cutting-edge solutions</div>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 sm:-bottom-8 -left-4 sm:-left-8 bg-white dark:bg-card p-4 sm:p-6 rounded-xl shadow-lg border">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-full flex items-center justify-center">
+              <div className="hidden sm:block absolute -bottom-2 sm:-bottom-4 md:-bottom-8 -left-2 sm:-left-4 md:-left-8 bg-white dark:bg-card p-3 sm:p-4 md:p-6 rounded-xl shadow-lg border">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <svg
-                      className="w-5 h-5 sm:w-6 sm:h-6 text-primary"
+                      className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -306,7 +286,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-semibold text-sm sm:text-base">Quality Assured</div>
+                    <div className="font-semibold text-xs sm:text-sm md:text-base">Quality Assured</div>
                     <div className="text-xs sm:text-sm text-muted-foreground">Proven results</div>
                   </div>
                 </div>
@@ -317,25 +297,25 @@ export default function Home() {
       </section>
 
       {/* Client Logos Section */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="py-8 sm:py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900">
+          <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-2 sm:mb-4 text-gray-900">
               Trusted Clients Around The World
             </h2>
-            <p className="text-base md:text-lg text-gray-600">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600">
               We're proud to work with innovative companies across various industries
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
             {/* First Row */}
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 lg:gap-24 mb-10 md:mb-20">
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-16 xl:gap-24 mb-6 sm:mb-8 md:mb-10 lg:mb-20">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="w-32 h-20 sm:w-40 sm:h-24 flex items-center justify-center"
+                className="w-20 h-12 sm:w-24 sm:h-14 md:w-32 md:h-20 lg:w-40 lg:h-24 flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
               >
                 <img src="/images/clients/jaan-logo.png" alt="JAAN" className="max-w-full max-h-full object-contain" />
@@ -345,7 +325,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-32 h-20 sm:w-40 sm:h-24 flex items-center justify-center"
+                className="w-20 h-12 sm:w-24 sm:h-14 md:w-32 md:h-20 lg:w-40 lg:h-24 flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
               >
                 <img
@@ -359,7 +339,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="w-32 h-20 sm:w-40 sm:h-24 flex items-center justify-center"
+                className="w-20 h-12 sm:w-24 sm:h-14 md:w-32 md:h-20 lg:w-40 lg:h-24 flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
               >
                 <img
@@ -371,12 +351,12 @@ export default function Home() {
             </div>
 
             {/* Second Row */}
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 lg:gap-24">
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-16 xl:gap-24">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="w-32 h-20 sm:w-40 sm:h-24 flex items-center justify-center"
+                className="w-20 h-12 sm:w-24 sm:h-14 md:w-32 md:h-20 lg:w-40 lg:h-24 flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
               >
                 <img
@@ -390,7 +370,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="w-32 h-20 sm:w-40 sm:h-24 flex items-center justify-center"
+                className="w-20 h-12 sm:w-24 sm:h-14 md:w-32 md:h-20 lg:w-40 lg:h-24 flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
               >
                 <img
@@ -404,7 +384,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="w-32 h-20 sm:w-40 sm:h-24 flex items-center justify-center"
+                className="w-20 h-12 sm:w-24 sm:h-14 md:w-32 md:h-20 lg:w-40 lg:h-24 flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
               >
                 <img
@@ -419,22 +399,27 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-[#020817] via-background to-background">
+      <section className="py-8 sm:py-12 md:py-20 bg-gradient-to-b from-[#020817] via-background to-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
-            <p className="text-base md:text-lg text-muted-foreground mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 sm:mb-4">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8">
               Let's discuss how our technology solutions can help you achieve your business goals
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/booking">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Link href="/booking" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  className="bg-primary text-white hover:bg-primary/90 w-full sm:w-auto text-sm sm:text-base"
+                >
                   Schedule a Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/services">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent">
+              <Link href="/services" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent text-sm sm:text-base">
                   View Our Services
                 </Button>
               </Link>
@@ -442,8 +427,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer is now in app/layout.tsx */}
     </div>
   )
 }

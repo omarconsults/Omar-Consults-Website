@@ -1,79 +1,37 @@
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll {
-  animation: scroll 30s linear infinite;
-}
-
-.animate-scroll:hover {
-  animation-play-state: paused;
-}
-
-.gradient-mask {
-  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
-}
-
-/* New Floating Animations */
 @keyframes float-slow {
   0%,
   100% {
-    transform: translateY(0px) translateX(0px);
+    transform: translateY(0px);
   }
-  33% {
-    transform: translateY(-20px) translateX(10px);
-  }
-  66% {
-    transform: translateY(10px) translateX(-5px);
+  50% {
+    transform: translateY(-20px);
   }
 }
 
 @keyframes float-medium {
   0%,
   100% {
-    transform: translateY(0px) translateX(0px) rotate(0deg);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-30px) translateX(15px) rotate(180deg);
+    transform: translateY(-15px);
   }
 }
 
 @keyframes float-fast {
   0%,
   100% {
-    transform: translateY(0px) translateX(0px) scale(1);
-  }
-  25% {
-    transform: translateY(-15px) translateX(-10px) scale(1.1);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-25px) translateX(20px) scale(0.9);
-  }
-  75% {
-    transform: translateY(-10px) translateX(-15px) scale(1.05);
-  }
-}
-
-@keyframes gradient-x {
-  0%,
-  100% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(100%);
+    transform: translateY(-10px);
   }
 }
 
 @keyframes pulse-slow {
   0%,
   100% {
-    opacity: 0.3;
+    opacity: 0.4;
   }
   50% {
     opacity: 0.8;
@@ -90,21 +48,26 @@
   }
 }
 
-/* Animation Classes */
+@keyframes gradient-x {
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
 .animate-float-slow {
-  animation: float-slow 8s ease-in-out infinite;
+  animation: float-slow 6s ease-in-out infinite;
 }
 
 .animate-float-medium {
-  animation: float-medium 6s ease-in-out infinite;
+  animation: float-medium 4s ease-in-out infinite;
 }
 
 .animate-float-fast {
-  animation: float-fast 4s ease-in-out infinite;
-}
-
-.animate-gradient-x {
-  animation: gradient-x 15s ease-in-out infinite;
+  animation: float-fast 3s ease-in-out infinite;
 }
 
 .animate-pulse-slow {
@@ -113,4 +76,37 @@
 
 .animate-fade-in-out {
   animation: fade-in-out 3s ease-in-out infinite;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 8s ease-in-out infinite;
+}
+
+/* Mobile-specific animations - reduce motion for better performance */
+@media (max-width: 640px) {
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast {
+    animation-duration: 8s; /* Slower on mobile */
+  }
+
+  .animate-pulse-slow {
+    animation-duration: 6s;
+  }
+
+  .animate-gradient-x {
+    animation-duration: 12s;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast,
+  .animate-pulse-slow,
+  .animate-fade-in-out,
+  .animate-gradient-x {
+    animation: none;
+  }
 }

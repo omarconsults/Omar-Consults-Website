@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { Menu, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -16,15 +17,7 @@ import {
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null) // This ref is not used for scrollYProgress in this component, but kept for consistency if needed.
-  // const { scrollYProgress } = useScroll({ // Removed as it's not directly used for header animation here
-  //   target: containerRef,
-  //   offset: ["start start", "end start"],
-  // })
-
-  // const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  // const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -38,32 +31,35 @@ export function Header() {
   }, [])
 
   if (!mounted) {
-    return null // Or a loading spinner
+    return null
   }
 
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md" : "bg-transparent"
+        isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/images/omar-logo.png"
               alt="Omar Consults"
               width={200}
               height={70}
-              className="h-8 w-auto sm:h-10 md:h-12 lg:h-14 transition-all duration-300 filter brightness-110 contrast-125"
+              className="h-6 w-auto sm:h-8 md:h-10 lg:h-12 transition-all duration-300 filter brightness-110 contrast-125"
               priority
             />
           </Link>
-          <div className="hidden md:block">
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:block">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-sm">Services</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="grid gap-3 p-6 w-[400px] lg:w-[500px] lg:grid-cols-2">
                       <div className="row-span-3">
@@ -135,19 +131,61 @@ export function Header() {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          <div className="flex items-center gap-2">
-            <Link href="/booking" className="hidden sm:block">
-              <Button size="sm" className="text-xs md:text-sm">
+
+          {/* Desktop CTA Button */}
+          <div className="hidden md:flex items-center gap-2">
+            <Link href="/booking">
+              <Button size="sm" className="text-xs lg:text-sm px-3 lg:px-4">
                 Book Consultation
               </Button>
             </Link>
-            <Link href="/booking" className="sm:hidden">
-              <Button size="sm" className="text-xs px-2">
-                Book
-              </Button>
-            </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 rounded-md text-foreground hover:bg-accent"
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden">
+            <div className="px-4 py-6 space-y-4 bg-background/95 backdrop-blur-md border-t shadow-lg">
+              <Link
+                href="/services"
+                className="block px-3 py-2 text-base font-medium text-foreground hover:bg-accent rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Services
+              </Link>
+              <Link
+                href="/about"
+                className="block px-3 py-2 text-base font-medium text-foreground hover:bg-accent rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <a
+                href="https://bizcore.site"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-3 py-2 text-base font-medium text-foreground hover:bg-accent rounded-md transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                BizCore
+              </a>
+              <div className="pt-4 border-t">
+                <Link href="/booking" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button className="w-full">Book Consultation</Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   )
