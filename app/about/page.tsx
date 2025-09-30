@@ -65,7 +65,7 @@ export default function AboutPage() {
             >
               <div className="relative rounded-2xl overflow-hidden">
                 <Image
-                  src="https://i.ibb.co/G399Vvj7/software-engineer-roadmap-e1736084062499.jpg"
+                  src="/images/design-mode/software-engineer-roadmap-e1736084062499.jpg"
                   alt="Omar Consults Team"
                   width={600}
                   height={400}

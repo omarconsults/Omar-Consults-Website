@@ -16,11 +16,11 @@ export default function WhatsAppButton() {
       aria-label="Chat with us on WhatsApp"
     >
       <Image
-        src="/images/whatsapp-logo.png"
-        alt="WhatsApp Logo"
+        src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000"
+        alt="WhatsApp"
         width={32}
         height={32}
-        className="w-6 h-6 sm:w-8 sm:h-8"
+        className="w-6 h-6 sm:w-8 sm:h-8 invert"
       />
     </a>
   )

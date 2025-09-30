@@ -156,7 +156,7 @@ export default function Home() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
               <Image
-                src="https://i.ibb.co/5gc10p3f/undraw-online-resume-qyys-2.png"
+                src="/images/design-mode/undraw-online-resume-qyys-2.png"
                 alt="Technology Team Collaboration"
                 width={1200}
                 height={600}
@@ -187,7 +187,7 @@ export default function Home() {
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 backdrop-blur-sm bg-background/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 md:mb-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -323,7 +323,7 @@ export default function Home() {
             >
               <div className="relative rounded-2xl overflow-hidden group">
                 <Image
-                  src="https://i.ibb.co/G399Vvj7/software-engineer-roadmap-e1736084062499.jpg"
+                  src="/images/design-mode/software-engineer-roadmap-e1736084062499.jpg"
                   alt="Omar Consults Team"
                   width={600}
                   height={400}
