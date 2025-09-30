@@ -13,12 +13,40 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json()
+    const formData = await request.formData()
+
+    // Extract form data
+    const name = formData.get("name") as string
+    const email = formData.get("email") as string
+    const phone = formData.get("phone") as string
+    const company = formData.get("company") as string
+    const service = formData.get("service") as string
+    const date = formData.get("date") as string
+    const time = formData.get("time") as string
+    const message = formData.get("message") as string
+
+    // Validate required fields
+    if (!name || !email || !service || !date || !time) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Please fill in all required fields",
+        },
+        { status: 400 },
+      )
+    }
 
     // Create booking object
     const booking = {
       id: Date.now().toString(),
-      ...body,
+      name,
+      email,
+      phone: phone || "",
+      company: company || "",
+      service,
+      preferredDate: date,
+      preferredTime: time,
+      message: message || "",
       status: "pending",
       createdAt: new Date().toISOString(),
     }
@@ -32,7 +60,7 @@ export async function POST(request: Request) {
       await resend.emails.send({
         from: "Omar Consults <contact@omarconsults.ng>",
         to: "mcgrin1@gmail.com",
-        subject: `New Booking: ${body.service}`,
+        subject: `New Booking: ${service}`,
         html: `
           <!DOCTYPE html>
           <html>
@@ -75,7 +103,7 @@ export async function POST(request: Request) {
                                 <strong style="color: #667eea;">Client Name:</strong>
                               </td>
                               <td style="padding: 15px; background-color: #ffffff; border-bottom: 1px solid #e9ecef;">
-                                ${body.name}
+                                ${name}
                               </td>
                             </tr>
                             <tr>
@@ -83,7 +111,7 @@ export async function POST(request: Request) {
                                 <strong style="color: #667eea;">Email:</strong>
                               </td>
                               <td style="padding: 15px; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef;">
-                                <a href="mailto:${body.email}" style="color: #667eea; text-decoration: none;">${body.email}</a>
+                                <a href="mailto:${email}" style="color: #667eea; text-decoration: none;">${email}</a>
                               </td>
                             </tr>
                             <tr>
@@ -91,7 +119,7 @@ export async function POST(request: Request) {
                                 <strong style="color: #667eea;">Phone:</strong>
                               </td>
                               <td style="padding: 15px; background-color: #ffffff; border-bottom: 1px solid #e9ecef;">
-                                <a href="tel:${body.phone}" style="color: #667eea; text-decoration: none;">${body.phone}</a>
+                                <a href="tel:${phone}" style="color: #667eea; text-decoration: none;">${phone || "Not provided"}</a>
                               </td>
                             </tr>
                             <tr>
@@ -99,7 +127,7 @@ export async function POST(request: Request) {
                                 <strong style="color: #667eea;">Company:</strong>
                               </td>
                               <td style="padding: 15px; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef;">
-                                ${body.company || "Not provided"}
+                                ${company || "Not provided"}
                               </td>
                             </tr>
                             <tr>
@@ -107,7 +135,7 @@ export async function POST(request: Request) {
                                 <strong style="color: #667eea;">Service:</strong>
                               </td>
                               <td style="padding: 15px; background-color: #ffffff; border-bottom: 1px solid #e9ecef;">
-                                ${body.service}
+                                ${service}
                               </td>
                             </tr>
                             <tr>
@@ -115,7 +143,7 @@ export async function POST(request: Request) {
                                 <strong style="color: #667eea;">Preferred Date:</strong>
                               </td>
                               <td style="padding: 15px; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef;">
-                                ${new Date(body.preferredDate).toLocaleDateString("en-US", {
+                                ${new Date(date).toLocaleDateString("en-US", {
                                   weekday: "long",
                                   year: "numeric",
                                   month: "long",
@@ -128,19 +156,19 @@ export async function POST(request: Request) {
                                 <strong style="color: #667eea;">Preferred Time:</strong>
                               </td>
                               <td style="padding: 15px; background-color: #ffffff; border-bottom: 1px solid #e9ecef;">
-                                ${body.preferredTime}
+                                ${time}
                               </td>
                             </tr>
                           </table>
                           
                            Message 
                           ${
-                            body.message
+                            message
                               ? `
                           <div style="margin: 30px 0; padding: 20px; background-color: #f8f9fa; border-left: 4px solid #667eea; border-radius: 4px;">
                             <strong style="color: #667eea; display: block; margin-bottom: 10px;">Message:</strong>
                             <p style="margin: 0; color: #333333; line-height: 1.6;">
-                              ${body.message}
+                              ${message}
                             </p>
                           </div>
                           `
@@ -151,7 +179,7 @@ export async function POST(request: Request) {
                           <table role="presentation" style="margin: 30px 0;">
                             <tr>
                               <td style="border-radius: 6px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                <a href="mailto:${body.email}" style="display: inline-block; padding: 14px 30px; color: #ffffff; text-decoration: none; font-weight: bold; font-size: 16px;">
+                                <a href="mailto:${email}" style="display: inline-block; padding: 14px 30px; color: #ffffff; text-decoration: none; font-weight: bold; font-size: 16px;">
                                   Reply to Client
                                 </a>
                               </td>
@@ -180,7 +208,7 @@ export async function POST(request: Request) {
       // 2. Send confirmation to client
       await resend.emails.send({
         from: "Omar Consults <contact@omarconsults.ng>",
-        to: body.email,
+        to: email,
         subject: "Booking Confirmation - Omar Business Consulting",
         html: `
           <!DOCTYPE html>
@@ -206,7 +234,7 @@ export async function POST(request: Request) {
                       <tr>
                         <td style="padding: 40px;">
                           <p style="margin: 0 0 20px 0; color: #333333; font-size: 16px; line-height: 1.5;">
-                            Dear ${body.name},
+                            Dear ${name},
                           </p>
                           
                           <p style="margin: 0 0 20px 0; color: #333333; font-size: 16px; line-height: 1.5;">
@@ -223,7 +251,7 @@ export async function POST(request: Request) {
                                   <strong>Service:</strong>
                                 </td>
                                 <td style="padding: 10px 0; color: #333333; font-size: 14px; text-align: right;">
-                                  ${body.service}
+                                  ${service}
                                 </td>
                               </tr>
                               <tr>
@@ -231,7 +259,7 @@ export async function POST(request: Request) {
                                   <strong>Preferred Date:</strong>
                                 </td>
                                 <td style="padding: 10px 0; color: #333333; font-size: 14px; text-align: right; border-top: 1px solid #e9ecef;">
-                                  ${new Date(body.preferredDate).toLocaleDateString("en-US", {
+                                  ${new Date(date).toLocaleDateString("en-US", {
                                     weekday: "long",
                                     year: "numeric",
                                     month: "long",
@@ -244,7 +272,7 @@ export async function POST(request: Request) {
                                   <strong>Preferred Time:</strong>
                                 </td>
                                 <td style="padding: 10px 0; color: #333333; font-size: 14px; text-align: right; border-top: 1px solid #e9ecef;">
-                                  ${body.preferredTime}
+                                  ${time}
                                 </td>
                               </tr>
                               <tr>
@@ -316,13 +344,19 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         success: true,
-        message: "Booking created successfully",
+        message: "Booking submitted successfully! We'll contact you within 24 hours.",
         booking,
       },
       { status: 201 },
     )
   } catch (error) {
     console.error("Booking creation failed:", error)
-    return NextResponse.json({ success: false, message: "Failed to create booking" }, { status: 500 })
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Failed to submit booking. Please try again.",
+      },
+      { status: 500 },
+    )
   }
 }
