@@ -69,27 +69,22 @@ export async function POST(request: Request) {
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <title>New Booking Notification</title>
-              [if mso]>
+              <!--[if mso]>
               <style type="text/css">
                 body, table, td {font-family: Arial, Helvetica, sans-serif !important;}
               </style>
-              <![endif]
+              <![endif]-->
             </head>
             <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f7f8fa; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse; background-color: #f7f8fa;">
                 <tr>
                   <td align="center" style="padding: 40px 20px;">
-                     Main Container 
+                    <!-- Main Container -->
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; width: 100%; border-collapse: collapse; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
                       
-                       Header with Logo 
+                      <!-- Header -->
                       <tr>
-                        <td style="padding: 40px 40px 32px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center;">
-                           Logo 
-                          <div style="margin: 0 0 24px 0;">
-                            <img src="https://res.cloudinary.com/dqbmouqsb/image/upload/v1759503285/Omar_logo_png_-_Copy_lpbxbl.png" alt="Omar Consults" style="max-width: 180px; height: auto; display: inline-block;" />
-                          </div>
-                          
+                        <td style="padding: 48px 40px 32px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center;">
                           <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700; letter-spacing: -0.5px;">
                             🎉 New Booking
                           </h1>
@@ -99,15 +94,15 @@ export async function POST(request: Request) {
                         </td>
                       </tr>
                       
-                       Content 
+                      <!-- Content -->
                       <tr>
                         <td style="padding: 40px;">
-                           Intro 
+                          <!-- Intro -->
                           <p style="margin: 0 0 32px 0; color: #374151; font-size: 16px; line-height: 1.6;">
                             A new client has requested a consultation. Review the details below and respond promptly.
                           </p>
                           
-                           Booking Details Card 
+                          <!-- Booking Details Card -->
                           <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse; margin: 0 0 32px 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
                             <tr>
                               <td colspan="2" style="padding: 16px 20px; background-color: #f9fafb; border-bottom: 2px solid #e5e7eb;">
@@ -190,7 +185,7 @@ export async function POST(request: Request) {
                             </tr>
                           </table>
                           
-                           Message Section 
+                          <!-- Message Section -->
                           ${
                             message
                               ? `
@@ -206,7 +201,7 @@ export async function POST(request: Request) {
                               : ""
                           }
                           
-                           Action Button 
+                          <!-- Action Button -->
                           <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
                             <tr>
                               <td style="border-radius: 8px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);">
@@ -219,7 +214,7 @@ export async function POST(request: Request) {
                         </td>
                       </tr>
                       
-                       Footer 
+                      <!-- Footer -->
                       <tr>
                         <td style="padding: 32px 40px; background-color: #f9fafb; border-top: 1px solid #e5e7eb; text-align: center;">
                           <p style="margin: 0; color: #6b7280; font-size: 13px; line-height: 1.6;">
@@ -250,27 +245,22 @@ export async function POST(request: Request) {
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <meta http-equiv="X-UA-Compatible" content="IE=edge">
               <title>Booking Confirmation</title>
-              [if mso]>
+              <!--[if mso]>
               <style type="text/css">
                 body, table, td {font-family: Arial, Helvetica, sans-serif !important;}
               </style>
-              <![endif]
+              <![endif]-->
             </head>
             <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f7f8fa; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width: 100%; border-collapse: collapse; background-color: #f7f8fa;">
                 <tr>
                   <td align="center" style="padding: 40px 20px;">
-                     Main Container 
+                    <!-- Main Container -->
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; width: 100%; border-collapse: collapse; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
                       
-                       Header with Logo 
+                      <!-- Header -->
                       <tr>
-                        <td style="padding: 40px 40px 32px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center;">
-                           Logo 
-                          <div style="margin: 0 0 24px 0;">
-                            <img src="https://res.cloudinary.com/dqbmouqsb/image/upload/v1759503285/Omar_logo_png_-_Copy_lpbxbl.png" alt="Omar Consults" style="max-width: 180px; height: auto; display: inline-block;" />
-                          </div>
-                          
+                        <td style="padding: 48px 40px 32px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); text-align: center;">
                           <div style="width: 64px; height: 64px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin: 0 0 20px 0;">
                             <span style="font-size: 32px;">✓</span>
                           </div>
@@ -283,10 +273,10 @@ export async function POST(request: Request) {
                         </td>
                       </tr>
                       
-                       Content 
+                      <!-- Content -->
                       <tr>
                         <td style="padding: 40px;">
-                           Greeting 
+                          <!-- Greeting -->
                           <p style="margin: 0 0 8px 0; color: #374151; font-size: 18px; font-weight: 600;">
                             Hello ${name},
                           </p>
@@ -295,7 +285,7 @@ export async function POST(request: Request) {
                             Thank you for choosing Omar Business Consulting. Your booking request has been successfully received, and our team will review it shortly.
                           </p>
                           
-                           Booking Summary Card 
+                          <!-- Booking Summary Card -->
                           <div style="margin: 0 0 32px 0; padding: 28px; background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 100%); border-radius: 12px; border: 1px solid #e0e7ff;">
                             <h2 style="margin: 0 0 24px 0; color: #667eea; font-size: 20px; font-weight: 700;">
                               Your Booking Summary
@@ -342,7 +332,7 @@ export async function POST(request: Request) {
                             </table>
                           </div>
                           
-                           What's Next Section 
+                          <!-- What's Next Section -->
                           <div style="margin: 0 0 32px 0; padding: 24px; background-color: #ecfdf5; border-left: 4px solid #10b981; border-radius: 8px;">
                             <h3 style="margin: 0 0 16px 0; color: #065f46; font-size: 18px; font-weight: 700;">
                               What Happens Next?
@@ -375,7 +365,7 @@ export async function POST(request: Request) {
                             </table>
                           </div>
                           
-                           Contact Section 
+                          <!-- Contact Section -->
                           <div style="margin: 0 0 24px 0; padding: 28px; background-color: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; text-align: center;">
                             <p style="margin: 0 0 20px 0; color: #111827; font-size: 16px; font-weight: 600;">
                               Need to Make Changes?
@@ -384,7 +374,7 @@ export async function POST(request: Request) {
                               Contact us anytime if you need to reschedule or have questions
                             </p>
                             
-                             Contact Buttons 
+                            <!-- Contact Buttons -->
                             <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
                               <tr>
                                 <td style="padding: 0 8px;">
@@ -413,7 +403,7 @@ export async function POST(request: Request) {
                             </table>
                           </div>
                           
-                           Signature 
+                          <!-- Signature -->
                           <p style="margin: 0; color: #6b7280; font-size: 15px; line-height: 1.6;">
                             We look forward to working with you!<br>
                             <strong style="color: #111827;">The Omar Consults Team</strong>
@@ -421,7 +411,7 @@ export async function POST(request: Request) {
                         </td>
                       </tr>
                       
-                       Footer 
+                      <!-- Footer -->
                       <tr>
                         <td style="padding: 32px 40px; background-color: #f9fafb; border-top: 1px solid #e5e7eb; text-align: center;">
                           <p style="margin: 0 0 12px 0; color: #111827; font-size: 16px; font-weight: 700;">

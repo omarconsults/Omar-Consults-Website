@@ -54,7 +54,7 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-12 md:pb-16 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
+      <section className="pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-6 sm:pb-10 md:pb-14 lg:pb-16 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -62,10 +62,10 @@ export default function BookingPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 md:mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 md:mb-6">
               Book a Consultation
             </h1>
-            <p className="text-sm sm:text-base md:text-xl text-gray-300 mb-4 sm:mb-6 md:mb-8 px-2">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 px-4">
               Schedule a free consultation to discuss your project and explore how we can help your business grow
             </p>
           </motion.div>
@@ -73,48 +73,46 @@ export default function BookingPage() {
       </section>
 
       {/* Booking Form */}
-      <section className="py-8 sm:py-12 md:py-20">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
+            <div className="grid lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
               {/* Booking Benefits */}
               <div className="lg:col-span-1 order-2 lg:order-1">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="space-y-4 sm:space-y-6 md:space-y-8"
+                  className="space-y-6"
                 >
                   <div>
-                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4">What to Expect</h2>
-                    <p className="text-xs sm:text-sm md:text-base text-muted-foreground mb-3 sm:mb-4 md:mb-6 leading-relaxed">
+                    <h2 className="text-xl sm:text-2xl font-bold mb-3">What to Expect</h2>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       Our consultation process is designed to understand your needs and provide valuable insights.
                     </p>
                   </div>
 
-                  <div className="space-y-3 sm:space-y-4 md:space-y-6">
+                  <div className="space-y-4">
                     {benefits.map((benefit, index) => (
-                      <div key={index} className="flex items-start space-x-2 sm:space-x-3 md:space-x-4">
-                        <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-primary/10 rounded-full flex items-center justify-center mt-0.5 sm:mt-1 flex-shrink-0">
-                          <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-primary" />
+                      <div key={index} className="flex items-start space-x-3">
+                        <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <CheckCircle className="w-4 h-4 text-primary" />
                         </div>
                         <div>
-                          <h3 className="font-semibold text-sm sm:text-base md:text-lg mb-1">{benefit.title}</h3>
-                          <p className="text-xs sm:text-sm text-muted-foreground leading-tight">
-                            {benefit.description}
-                          </p>
+                          <h3 className="font-semibold text-base mb-1">{benefit.title}</h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <div className="bg-muted/50 p-3 sm:p-4 md:p-6 rounded-lg">
-                    <h3 className="font-semibold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">Free Consultation</h3>
-                    <p className="text-xs sm:text-sm mb-2 sm:mb-3 md:mb-4 leading-relaxed">
+                  <div className="bg-muted/50 p-4 sm:p-5 rounded-lg">
+                    <h3 className="font-semibold text-base mb-2">Free Consultation</h3>
+                    <p className="text-sm mb-3 leading-relaxed">
                       Our initial consultation is completely free with no obligations.
                     </p>
-                    <div className="flex items-center space-x-2 text-xs sm:text-sm">
-                      <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
+                    <div className="flex items-center space-x-2 text-sm">
+                      <Clock className="w-4 h-4 text-primary flex-shrink-0" />
                       <span>Duration: 30-60 minutes</span>
                     </div>
                   </div>
@@ -127,67 +125,59 @@ export default function BookingPage() {
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="bg-card p-4 sm:p-6 md:p-8 rounded-2xl border"
+                  className="bg-card p-5 sm:p-6 md:p-8 rounded-2xl border shadow-sm"
                 >
-                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6">
-                    Schedule Your Consultation
-                  </h2>
+                  <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Schedule Your Consultation</h2>
 
                   {/* Success/Error Messages */}
                   {submitResult && (
                     <div
-                      className={`mb-3 sm:mb-4 md:mb-6 p-3 sm:p-4 rounded-lg flex items-start space-x-2 sm:space-x-3 ${
+                      className={`mb-5 p-4 rounded-lg flex items-start space-x-3 ${
                         submitResult.success
-                          ? "bg-green-50 border border-green-200 text-green-800"
-                          : "bg-red-50 border border-red-200 text-red-800"
+                          ? "bg-green-50 border border-green-200 text-green-800 dark:bg-green-900/20 dark:border-green-800 dark:text-green-200"
+                          : "bg-red-50 border border-red-200 text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-200"
                       }`}
                     >
                       {submitResult.success ? (
-                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 text-green-600 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       ) : (
-                        <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 text-red-600 flex-shrink-0" />
+                        <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       )}
                       <div>
-                        <p className="font-medium text-xs sm:text-sm md:text-base">
-                          {submitResult.success ? "Success!" : "Error"}
-                        </p>
-                        <p className="text-xs sm:text-sm">{submitResult.message || submitResult.error}</p>
+                        <p className="font-medium text-sm">{submitResult.success ? "Success!" : "Error"}</p>
+                        <p className="text-sm mt-0.5">{submitResult.message || submitResult.error}</p>
                       </div>
                     </div>
                   )}
 
-                  <form id="booking-form" onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-6">
+                  <form id="booking-form" onSubmit={handleSubmit} className="space-y-5">
                     {/* Service Selection */}
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium mb-2 sm:mb-3">
-                        What service are you interested in? *
-                      </label>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
+                      <label className="block text-sm font-medium mb-3">What service are you interested in? *</label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {services.map((service) => (
                           <button
                             key={service.id}
                             type="button"
                             onClick={() => setSelectedService(service.id)}
-                            className={`p-2 sm:p-3 md:p-4 border rounded-lg text-left transition-colors ${
+                            className={`p-4 border rounded-lg text-left transition-all min-h-[80px] ${
                               selectedService === service.id
-                                ? "border-primary bg-primary/5"
-                                : "border-input hover:border-primary/50"
+                                ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                                : "border-input hover:border-primary/50 hover:bg-muted/50"
                             }`}
                           >
-                            <div className="font-medium text-xs sm:text-sm md:text-base">{service.name}</div>
-                            <div className="text-xs sm:text-sm text-muted-foreground leading-tight">
-                              {service.description}
-                            </div>
+                            <div className="font-medium text-sm mb-1">{service.name}</div>
+                            <div className="text-xs text-muted-foreground leading-tight">{service.description}</div>
                           </button>
                         ))}
                       </div>
-                      {!selectedService && <p className="text-xs text-red-500 mt-1 sm:mt-2">Please select a service</p>}
+                      {!selectedService && <p className="text-xs text-red-500 mt-2">Please select a service</p>}
                     </div>
 
                     {/* Date Selection */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="date" className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2">
+                        <label htmlFor="date" className="block text-sm font-medium mb-2">
                           Preferred Date *
                         </label>
                         <input
@@ -195,19 +185,19 @@ export default function BookingPage() {
                           id="date"
                           name="date"
                           min={new Date().toISOString().split("T")[0]}
-                          className="w-full px-2 py-2 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-xs sm:text-sm md:text-base"
+                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
                           required
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="time" className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2">
+                        <label htmlFor="time" className="block text-sm font-medium mb-2">
                           Preferred Time *
                         </label>
                         <select
                           id="time"
                           name="time"
-                          className="w-full px-2 py-2 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-xs sm:text-sm md:text-base"
+                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
                           required
                         >
                           <option value="">Select a time</option>
@@ -222,9 +212,9 @@ export default function BookingPage() {
                     </div>
 
                     {/* Personal Information */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="name" className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2">
+                        <label htmlFor="name" className="block text-sm font-medium mb-2">
                           Full Name *
                         </label>
                         <input
@@ -232,12 +222,12 @@ export default function BookingPage() {
                           id="name"
                           name="name"
                           required
-                          className="w-full px-2 py-2 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-xs sm:text-sm md:text-base"
+                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
                           placeholder="Your full name"
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2">
+                        <label htmlFor="email" className="block text-sm font-medium mb-2">
                           Email Address *
                         </label>
                         <input
@@ -245,48 +235,49 @@ export default function BookingPage() {
                           id="email"
                           name="email"
                           required
-                          className="w-full px-2 py-2 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-xs sm:text-sm md:text-base"
+                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
                           placeholder="your.email@example.com"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="company" className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2">
+                        <label htmlFor="company" className="block text-sm font-medium mb-2">
                           Company
                         </label>
                         <input
                           type="text"
                           id="company"
                           name="company"
-                          className="w-full px-2 py-2 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-xs sm:text-sm md:text-base"
+                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
                           placeholder="Your company name"
                         />
                       </div>
                       <div>
-                        <label htmlFor="phone" className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2">
+                        <label htmlFor="phone" className="block text-sm font-medium mb-2">
                           Phone Number *
                         </label>
                         <input
                           type="tel"
                           id="phone"
                           name="phone"
-                          className="w-full px-2 py-2 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-xs sm:text-sm md:text-base"
+                          required
+                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
                           placeholder="+234 xxx xxx xxxx"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2">
+                      <label htmlFor="message" className="block text-sm font-medium mb-2">
                         Tell us about your project
                       </label>
                       <textarea
                         id="message"
                         name="message"
                         rows={4}
-                        className="w-full px-2 py-2 sm:px-3 sm:py-2 md:px-4 md:py-3 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background resize-none text-xs sm:text-sm md:text-base"
+                        className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background resize-none text-sm"
                         placeholder="Briefly describe your project, goals, and any specific requirements..."
                       />
                     </div>
@@ -297,14 +288,14 @@ export default function BookingPage() {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full text-sm sm:text-base"
+                      className="w-full h-12 text-base font-medium"
                       disabled={!selectedService || isSubmitting}
                     >
                       {isSubmitting ? "Scheduling..." : "Schedule Consultation"}
-                      <Calendar className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                      <Calendar className="ml-2 h-4 w-4" />
                     </Button>
 
-                    <p className="text-xs sm:text-sm text-muted-foreground text-center leading-relaxed">
+                    <p className="text-xs text-muted-foreground text-center leading-relaxed pt-2">
                       By scheduling a consultation, you agree to our terms of service and privacy policy.
                     </p>
                   </form>
@@ -316,29 +307,28 @@ export default function BookingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-8 sm:py-12 md:py-20 bg-muted/50">
+      <section className="py-12 sm:py-16 md:py-20 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-6 sm:mb-8 md:mb-12">
-              <h2 className="text-lg sm:text-xl md:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
+            <div className="text-center mb-8 sm:mb-10 md:mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Frequently Asked Questions</h2>
+              <p className="text-base sm:text-lg text-muted-foreground">
                 Common questions about our consultation process
               </p>
             </div>
 
-            <div className="space-y-3 sm:space-y-4 md:space-y-6">
+            <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-card p-3 sm:p-4 md:p-6 rounded-lg border"
+                  viewport={{ once: true }}
+                  className="bg-card p-5 sm:p-6 rounded-lg border shadow-sm"
                 >
-                  <h3 className="font-semibold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">{faq.question}</h3>
-                  <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">{faq.answer}</p>
+                  <h3 className="font-semibold text-base sm:text-lg mb-2">{faq.question}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{faq.answer}</p>
                 </motion.div>
               ))}
             </div>
