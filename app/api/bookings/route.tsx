@@ -58,8 +58,8 @@ export async function POST(request: Request) {
     try {
       // 1. Send notification to admin
       await resend.emails.send({
-        from: "Omar Consults <contact@omarconsults.ng>",
-        to: "mcgrin1@gmail.com",
+        from: "Omar Consults <bookings@omarconsults.ng>",
+        to: "contact@omarconsults.ng",
         subject: `New Booking: ${service}`,
         html: `
           <!DOCTYPE html>
@@ -207,7 +207,7 @@ export async function POST(request: Request) {
 
       // 2. Send confirmation to client
       await resend.emails.send({
-        from: "Omar Consults <contact@omarconsults.ng>",
+        from: "Omar Consults <bookings@omarconsults.ng>",
         to: email,
         subject: "Booking Confirmation - Omar Business Consulting",
         html: `
