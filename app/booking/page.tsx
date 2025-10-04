@@ -54,7 +54,7 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-6 sm:pb-10 md:pb-14 lg:pb-16 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
+      <section className="pt-20 pb-8 sm:pt-24 sm:pb-10 md:pt-28 md:pb-12 lg:pt-32 lg:pb-16 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -62,10 +62,10 @@ export default function BookingPage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 md:mb-6">
+            <h1 className="text-3xl font-bold text-white mb-3 sm:text-4xl sm:mb-4 md:text-5xl md:mb-5 lg:text-6xl lg:mb-6">
               Book a Consultation
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 px-4">
+            <p className="text-base text-gray-300 leading-relaxed sm:text-lg md:text-xl">
               Schedule a free consultation to discuss your project and explore how we can help your business grow
             </p>
           </motion.div>
@@ -73,10 +73,10 @@ export default function BookingPage() {
       </section>
 
       {/* Booking Form */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-20">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Booking Benefits */}
               <div className="lg:col-span-1 order-2 lg:order-1">
                 <motion.div
@@ -86,32 +86,32 @@ export default function BookingPage() {
                   className="space-y-6"
                 >
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-bold mb-3">What to Expect</h2>
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    <h2 className="text-xl font-bold mb-3 sm:text-2xl">What to Expect</h2>
+                    <p className="text-sm text-muted-foreground leading-relaxed sm:text-base">
                       Our consultation process is designed to understand your needs and provide valuable insights.
                     </p>
                   </div>
 
                   <div className="space-y-4">
                     {benefits.map((benefit, index) => (
-                      <div key={index} className="flex items-start space-x-3">
+                      <div key={index} className="flex items-start gap-3">
                         <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                           <CheckCircle className="w-4 h-4 text-primary" />
                         </div>
-                        <div>
-                          <h3 className="font-semibold text-base mb-1">{benefit.title}</h3>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-sm mb-1 sm:text-base">{benefit.title}</h3>
                           <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <div className="bg-muted/50 p-4 sm:p-5 rounded-lg">
-                    <h3 className="font-semibold text-base mb-2">Free Consultation</h3>
+                  <div className="bg-muted/50 p-4 rounded-lg sm:p-5">
+                    <h3 className="font-semibold text-sm mb-2 sm:text-base">Free Consultation</h3>
                     <p className="text-sm mb-3 leading-relaxed">
                       Our initial consultation is completely free with no obligations.
                     </p>
-                    <div className="flex items-center space-x-2 text-sm">
+                    <div className="flex items-center gap-2 text-sm">
                       <Clock className="w-4 h-4 text-primary flex-shrink-0" />
                       <span>Duration: 30-60 minutes</span>
                     </div>
@@ -125,14 +125,14 @@ export default function BookingPage() {
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="bg-card p-5 sm:p-6 md:p-8 rounded-2xl border shadow-sm"
+                  className="bg-card p-6 rounded-2xl border shadow-sm sm:p-7 md:p-8"
                 >
-                  <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Schedule Your Consultation</h2>
+                  <h2 className="text-xl font-bold mb-6 sm:text-2xl">Schedule Your Consultation</h2>
 
                   {/* Success/Error Messages */}
                   {submitResult && (
                     <div
-                      className={`mb-5 p-4 rounded-lg flex items-start space-x-3 ${
+                      className={`mb-6 p-4 rounded-lg flex items-start gap-3 ${
                         submitResult.success
                           ? "bg-green-50 border border-green-200 text-green-800 dark:bg-green-900/20 dark:border-green-800 dark:text-green-200"
                           : "bg-red-50 border border-red-200 text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-200"
@@ -143,27 +143,27 @@ export default function BookingPage() {
                       ) : (
                         <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                       )}
-                      <div>
+                      <div className="flex-1 min-w-0">
                         <p className="font-medium text-sm">{submitResult.success ? "Success!" : "Error"}</p>
-                        <p className="text-sm mt-0.5">{submitResult.message || submitResult.error}</p>
+                        <p className="text-sm mt-0.5 break-words">{submitResult.message || submitResult.error}</p>
                       </div>
                     </div>
                   )}
 
-                  <form id="booking-form" onSubmit={handleSubmit} className="space-y-5">
+                  <form id="booking-form" onSubmit={handleSubmit} className="space-y-6">
                     {/* Service Selection */}
                     <div>
                       <label className="block text-sm font-medium mb-3">What service are you interested in? *</label>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         {services.map((service) => (
                           <button
                             key={service.id}
                             type="button"
                             onClick={() => setSelectedService(service.id)}
-                            className={`p-4 border rounded-lg text-left transition-all min-h-[80px] ${
+                            className={`p-4 border rounded-lg text-left transition-all touch-manipulation ${
                               selectedService === service.id
                                 ? "border-primary bg-primary/5 ring-2 ring-primary/20"
-                                : "border-input hover:border-primary/50 hover:bg-muted/50"
+                                : "border-input hover:border-primary/50 hover:bg-muted/50 active:scale-[0.98]"
                             }`}
                           >
                             <div className="font-medium text-sm mb-1">{service.name}</div>
@@ -175,7 +175,7 @@ export default function BookingPage() {
                     </div>
 
                     {/* Date Selection */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
                         <label htmlFor="date" className="block text-sm font-medium mb-2">
                           Preferred Date *
@@ -185,7 +185,7 @@ export default function BookingPage() {
                           id="date"
                           name="date"
                           min={new Date().toISOString().split("T")[0]}
-                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
+                          className="w-full h-12 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm touch-manipulation"
                           required
                         />
                       </div>
@@ -197,7 +197,7 @@ export default function BookingPage() {
                         <select
                           id="time"
                           name="time"
-                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
+                          className="w-full h-12 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm touch-manipulation"
                           required
                         >
                           <option value="">Select a time</option>
@@ -212,7 +212,7 @@ export default function BookingPage() {
                     </div>
 
                     {/* Personal Information */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium mb-2">
                           Full Name *
@@ -222,7 +222,7 @@ export default function BookingPage() {
                           id="name"
                           name="name"
                           required
-                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
+                          className="w-full h-12 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm touch-manipulation"
                           placeholder="Your full name"
                         />
                       </div>
@@ -235,13 +235,13 @@ export default function BookingPage() {
                           id="email"
                           name="email"
                           required
-                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
+                          className="w-full h-12 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm touch-manipulation"
                           placeholder="your.email@example.com"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
                         <label htmlFor="company" className="block text-sm font-medium mb-2">
                           Company
@@ -250,7 +250,7 @@ export default function BookingPage() {
                           type="text"
                           id="company"
                           name="company"
-                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
+                          className="w-full h-12 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm touch-manipulation"
                           placeholder="Your company name"
                         />
                       </div>
@@ -263,7 +263,7 @@ export default function BookingPage() {
                           id="phone"
                           name="phone"
                           required
-                          className="w-full h-11 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm"
+                          className="w-full h-12 px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-sm touch-manipulation"
                           placeholder="+234 xxx xxx xxxx"
                         />
                       </div>
@@ -277,7 +277,7 @@ export default function BookingPage() {
                         id="message"
                         name="message"
                         rows={4}
-                        className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background resize-none text-sm"
+                        className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background resize-none text-sm touch-manipulation"
                         placeholder="Briefly describe your project, goals, and any specific requirements..."
                       />
                     </div>
@@ -288,14 +288,14 @@ export default function BookingPage() {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full h-12 text-base font-medium"
+                      className="w-full h-12 text-base font-medium touch-manipulation active:scale-[0.98] transition-transform"
                       disabled={!selectedService || isSubmitting}
                     >
                       {isSubmitting ? "Scheduling..." : "Schedule Consultation"}
                       <Calendar className="ml-2 h-4 w-4" />
                     </Button>
 
-                    <p className="text-xs text-muted-foreground text-center leading-relaxed pt-2">
+                    <p className="text-xs text-muted-foreground text-center leading-relaxed">
                       By scheduling a consultation, you agree to our terms of service and privacy policy.
                     </p>
                   </form>
@@ -307,12 +307,12 @@ export default function BookingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-muted/50">
+      <section className="py-12 bg-muted/50 sm:py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8 sm:mb-10 md:mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Frequently Asked Questions</h2>
-              <p className="text-base sm:text-lg text-muted-foreground">
+            <div className="text-center mb-10 sm:mb-12">
+              <h2 className="text-2xl font-bold mb-3 sm:text-3xl sm:mb-4">Frequently Asked Questions</h2>
+              <p className="text-base text-muted-foreground sm:text-lg">
                 Common questions about our consultation process
               </p>
             </div>
@@ -325,10 +325,10 @@ export default function BookingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-card p-5 sm:p-6 rounded-lg border shadow-sm"
+                  className="bg-card p-5 rounded-lg border shadow-sm sm:p-6"
                 >
-                  <h3 className="font-semibold text-base sm:text-lg mb-2">{faq.question}</h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{faq.answer}</p>
+                  <h3 className="font-semibold text-base mb-2 sm:text-lg">{faq.question}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed sm:text-base">{faq.answer}</p>
                 </motion.div>
               ))}
             </div>
@@ -343,22 +343,22 @@ const services = [
   {
     id: "ai-consulting",
     name: "AI Strategy & Consulting",
-    description: "Transform your business with AI solutions",
+    description: "Leverage AI to automate processes and drive innovation",
   },
   {
     id: "software-development",
-    name: "Custom Software Development",
-    description: "Build scalable applications",
+    name: "Web and Software Development",
+    description: "Custom websites and applications tailored to your needs",
   },
   {
     id: "cloud-solutions",
     name: "Cloud Solutions",
-    description: "Migrate and optimize in the cloud",
+    description: "Secure cloud infrastructure and migration services",
   },
   {
     id: "digital-marketing",
     name: "Digital Marketing",
-    description: "Grow your online presence",
+    description: "Strategic campaigns to boost your online visibility",
   },
 ]
 
