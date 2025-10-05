@@ -133,7 +133,7 @@ export default function Home() {
               className="mt-12 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
             >
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">50+</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">300+</div>
                 <div className="text-xs sm:text-sm text-gray-400">Projects Delivered</div>
               </div>
               <div className="text-center border-x border-white/20">
@@ -342,7 +342,7 @@ export default function Home() {
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                    <Zap className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-primary" />
                   </div>
                   <div>
                     <div className="font-bold text-sm sm:text-base">Innovation First</div>
@@ -375,7 +375,14 @@ export default function Home() {
       </section>
 
       {/* Client Logos Section */}
-      <section className="py-12 sm:py-16 md:py-24 bg-gradient-to-b from-background to-white relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-24 bg-gradient-to-b from-[#020817] via-[#0a0f1e] to-[#020817] relative overflow-hidden">
+        {/* Enhanced Background Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        </div>
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
             <motion.div
@@ -384,14 +391,14 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <Badge className="mb-4 px-4 py-2 text-xs sm:text-sm">
+              <Badge className="mb-4 px-4 py-2 text-xs sm:text-sm bg-white/10 text-white border-white/20">
                 <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                 Our Partners
               </Badge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-white">
                 Trusted Clients Around The World
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400">
+              <p className="text-base sm:text-lg md:text-xl text-gray-400">
                 We're proud to work with innovative companies across various industries
               </p>
             </motion.div>
@@ -411,14 +418,17 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  className="w-24 h-16 sm:w-32 sm:h-20 md:w-40 md:h-24 lg:w-48 lg:h-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 bg-white dark:bg-card p-4 rounded-xl shadow-md hover:shadow-xl"
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  className="w-24 h-16 sm:w-32 sm:h-20 md:w-40 md:h-24 lg:w-48 lg:h-28 flex items-center justify-center transition-all duration-300 group relative"
                 >
-                  <img
-                    src={client.src || "/placeholder.svg"}
-                    alt={client.alt}
-                    className="max-w-full max-h-full object-contain"
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
+                  <div className="relative bg-white dark:bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-lg hover:shadow-2xl border-2 border-transparent hover:border-primary/30 transition-all duration-300 w-full h-full flex items-center justify-center">
+                    <img
+                      src={client.src || "/placeholder.svg"}
+                      alt={client.alt}
+                      className="max-w-full max-h-full object-contain filter brightness-100 group-hover:brightness-110 transition-all"
+                    />
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -436,14 +446,17 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  className="w-24 h-16 sm:w-32 sm:h-20 md:w-40 md:h-24 lg:w-48 lg:h-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 bg-white dark:bg-card p-4 rounded-xl shadow-md hover:shadow-xl"
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  className="w-24 h-16 sm:w-32 sm:h-20 md:w-40 md:h-24 lg:w-48 lg:h-28 flex items-center justify-center transition-all duration-300 group relative"
                 >
-                  <img
-                    src={client.src || "/placeholder.svg"}
-                    alt={client.alt}
-                    className="max-w-full max-h-full object-contain"
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
+                  <div className="relative bg-white dark:bg-white p-4 sm:p-5 md:p-6 rounded-2xl shadow-lg hover:shadow-2xl border-2 border-transparent hover:border-primary/30 transition-all duration-300 w-full h-full flex items-center justify-center">
+                    <img
+                      src={client.src || "/placeholder.svg"}
+                      alt={client.alt}
+                      className="max-w-full max-h-full object-contain filter brightness-100 group-hover:brightness-110 transition-all"
+                    />
+                  </div>
                 </motion.div>
               ))}
             </div>
