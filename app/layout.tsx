@@ -92,6 +92,24 @@ export default function RootLayout({
             `,
           }}
         />
+
+        {/* Brevo Tracker */}
+        <Script src="https://cdn.brevo.com/js/sdk-loader.js" async strategy="afterInteractive" />
+        <Script
+          id="brevo-tracker"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.Brevo = window.Brevo || [];
+              Brevo.push([
+                "init",
+                {
+                  client_key: "iti035a7xx1t9qwuqdb2d6kh"
+                }
+              ]);
+            `,
+          }}
+        />
       </head>
       <body className={cn("min-h-screen bg-background font-sans antialiased", inter.className)}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
