@@ -145,16 +145,16 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4 text-sm sm:text-base">Contact Us</h3>
             <ul className="space-y-2">
-              <li className="text-xs sm:text-sm text-muted-foreground">Email: info@omarconsults.ng</li>
-              <li className="text-xs sm:text-sm text-muted-foreground">Phone: +234 XXX XXX XXXX</li>
-              <li className="text-xs sm:text-sm text-muted-foreground">Location: Lagos, Nigeria</li>
+              <li className="text-xs sm:text-sm text-muted-foreground">Email: contact@omarconsults.ng</li>
+              <li className="text-xs sm:text-sm text-muted-foreground">Phone: +2349066414474</li>
+              <li className="text-xs sm:text-sm text-muted-foreground">Location: Benin City, Nigeria</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t mt-8 pt-8 text-center">
           <p className="text-xs sm:text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Omar Consults. All rights reserved.
+            © {new Date().getFullYear()} Omar Consults. All rights reserved | Powered by INNOVATION
           </p>
         </div>
       </div>
