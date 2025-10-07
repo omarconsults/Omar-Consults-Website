@@ -1,74 +1,90 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
-import { Search, Filter } from "lucide-react"
+import { Search, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { BlogCard } from "@/components/blog-card"
 import { BlogHero } from "@/components/blog-hero"
-import { blogPosts, categories, getFeaturedPosts } from "@/lib/blog-data"
+import { blogPosts, getFeaturedPost } from "@/lib/blog-data"
+import { Button } from "@/components/ui/button"
+
+const categories = [
+  "All",
+  "Digital Transformation",
+  "Web Development",
+  "Cloud Computing",
+  "Cybersecurity",
+  "AI & Automation",
+  "Mobile Development",
+]
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
+  const featuredPost = getFeaturedPost()
 
-  const featuredPosts = getFeaturedPosts()
-  const featuredPost = featuredPosts[0]
+  const filteredPosts = useMemo(() => {
+    return blogPosts.filter((post) => {
+      const matchesSearch =
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
 
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesCategory = selectedCategory === "All" || post.category === selectedCategory
-    return matchesSearch && matchesCategory && !post.featured
-  })
+      const matchesCategory = selectedCategory === "All" || post.category === selectedCategory
+
+      return matchesSearch && matchesCategory && !post.featured
+    })
+  }, [searchQuery, selectedCategory])
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary/5 to-background">
-        <div className="container mx-auto max-w-7xl">
+      <section className="py-12 bg-gradient-to-b from-background to-muted/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">Our Blog & Insights</h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Expert insights on technology, digital transformation, and business innovation
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Our Blog</h1>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Insights, trends, and best practices in technology and digital transformation
             </p>
           </motion.div>
 
+          {/* Featured Post */}
           {featuredPost && <BlogHero post={featuredPost} />}
-        </div>
-      </section>
 
-      {/* Search and Filter */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8 border-b">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-            {/* Search */}
-            <div className="relative w-full md:w-96">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+          {/* Search and Filter */}
+          <div className="flex flex-col gap-6 mb-12">
+            <div className="relative max-w-xl mx-auto w-full">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
               <Input
-                type="search"
+                type="text"
                 placeholder="Search articles..."
-                className="pl-10"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 pr-10"
               />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )}
             </div>
 
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center">
               {categories.map((category) => (
                 <Badge
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
-                  className="cursor-pointer hover:bg-primary/10 transition-colors"
+                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
                   onClick={() => setSelectedCategory(category)}
                 >
                   {category}
@@ -76,35 +92,12 @@ export default function BlogPage() {
               ))}
             </div>
           </div>
-
-          {/* Active Filters */}
-          {(searchQuery || selectedCategory !== "All") && (
-            <div className="mt-4 flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Active filters:</span>
-              {searchQuery && (
-                <Badge variant="secondary" className="gap-1">
-                  Search: {searchQuery}
-                  <button onClick={() => setSearchQuery("")} className="ml-1 hover:text-destructive">
-                    ×
-                  </button>
-                </Badge>
-              )}
-              {selectedCategory !== "All" && (
-                <Badge variant="secondary" className="gap-1">
-                  {selectedCategory}
-                  <button onClick={() => setSelectedCategory("All")} className="ml-1 hover:text-destructive">
-                    ×
-                  </button>
-                </Badge>
-              )}
-            </div>
-          )}
         </div>
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-7xl">
+      <section className="py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post, index) => (
@@ -112,10 +105,8 @@ export default function BlogPage() {
               ))}
             </div>
           ) : (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
-              <Filter className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-2xl font-semibold mb-2">No articles found</h3>
-              <p className="text-muted-foreground mb-6">Try adjusting your search or filter criteria</p>
+            <div className="text-center py-12">
+              <p className="text-lg text-muted-foreground mb-4">No articles found matching your criteria.</p>
               <Button
                 onClick={() => {
                   setSearchQuery("")
@@ -124,27 +115,28 @@ export default function BlogPage() {
               >
                 Clear Filters
               </Button>
-            </motion.div>
+            </div>
           )}
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary/5">
-        <div className="container mx-auto max-w-4xl text-center">
+      {/* Newsletter Section */}
+      <section className="py-16 bg-muted/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mx-auto text-center"
           >
-            <h2 className="text-3xl font-bold mb-4">Stay Updated with Our Latest Insights</h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Get expert articles, tips, and updates delivered directly to your inbox
+            <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
+            <p className="text-muted-foreground mb-6">
+              Subscribe to our newsletter for the latest insights and updates
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input type="email" placeholder="Enter your email" className="flex-1" />
-              <Button size="lg">Subscribe</Button>
+            <div className="flex gap-2 max-w-md mx-auto">
+              <Input type="email" placeholder="Enter your email" />
+              <Button>Subscribe</Button>
             </div>
           </motion.div>
         </div>

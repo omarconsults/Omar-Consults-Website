@@ -3,24 +3,17 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { Calendar, Clock, Share2, ArrowLeft, Tag } from "lucide-react"
 import { motion } from "framer-motion"
+import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react"
 import ReactMarkdown from "react-markdown"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Separator } from "@/components/ui/separator"
 import { Card, CardContent } from "@/components/ui/card"
-import { BlogCard } from "@/components/blog-card"
+import { Separator } from "@/components/ui/separator"
 import { getPostBySlug, getRelatedPosts } from "@/lib/blog-data"
+import { BlogCard } from "@/components/blog-card"
 
-interface BlogPostPageProps {
-  params: {
-    slug: string
-  }
-}
-
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = getPostBySlug(params.slug)
 
   if (!post) {
@@ -37,196 +30,135 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           text: post.excerpt,
           url: window.location.href,
         })
-      } catch (error) {
-        console.error("Error sharing:", error)
+      } catch (err) {
+        console.log("Error sharing:", err)
       }
     }
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary/5 to-background">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            {/* Breadcrumb */}
-            <Link
-              href="/blog"
-              className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Blog
-            </Link>
+    <div className="min-h-screen pt-20">
+      {/* Breadcrumb */}
+      <div className="bg-muted/30 py-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/blog"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Blog
+          </Link>
+        </div>
+      </div>
 
-            {/* Category & Tags */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              <Badge className="bg-primary text-primary-foreground">{post.category}</Badge>
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
-                  {tag}
-                </Badge>
-              ))}
+      {/* Article Header */}
+      <section className="py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <Badge className="mb-4">{post.category}</Badge>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6">{post.title}</h1>
+            <div className="flex items-center gap-6 text-muted-foreground mb-8">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-5 h-5" />
+                <span>
+                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                <span>{post.readingTime}</span>
+              </div>
             </div>
-
-            {/* Title */}
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6 leading-tight">{post.title}</h1>
-
-            {/* Meta Info */}
-            <div className="flex flex-wrap items-center gap-6 mb-8">
+            <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-3">
-                <Avatar className="h-10 w-10">
-                  <AvatarImage src={post.author.avatar || "/placeholder.svg"} alt={post.author.name} />
-                  <AvatarFallback>{post.author.name.charAt(0)}</AvatarFallback>
-                </Avatar>
+                <Image
+                  src={post.author.avatar || "/placeholder.svg"}
+                  alt={post.author.name}
+                  width={48}
+                  height={48}
+                  className="rounded-full"
+                />
                 <div>
                   <p className="font-medium">{post.author.name}</p>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      {post.readingTime}
-                    </span>
-                  </div>
                 </div>
               </div>
-              <Button variant="outline" size="sm" onClick={handleShare} className="ml-auto bg-transparent">
-                <Share2 className="h-4 w-4 mr-2" />
+              <Button variant="outline" size="sm" onClick={handleShare}>
+                <Share2 className="w-4 h-4 mr-2" />
                 Share
               </Button>
             </div>
-
-            {/* Featured Image */}
-            <div className="relative h-[400px] rounded-2xl overflow-hidden mb-12">
-              <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" priority />
-            </div>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Content Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-4xl">
-          <motion.article
+          {/* Featured Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative h-[400px] rounded-2xl overflow-hidden mb-12"
+          >
+            <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
+          </motion.div>
+
+          {/* Article Content */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-lg"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="prose prose-lg dark:prose-invert max-w-none mb-12"
           >
             <ReactMarkdown>{post.content}</ReactMarkdown>
-          </motion.article>
-
-          <Separator className="my-12" />
-
-          {/* Author Bio */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <Card className="bg-muted/50">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <Avatar className="h-16 w-16">
-                    <AvatarImage src={post.author.avatar || "/placeholder.svg"} alt={post.author.name} />
-                    <AvatarFallback>{post.author.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2">About the Author</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Our team of technology experts shares insights on digital transformation, software development,
-                      and business innovation.
-                    </p>
-                    <div className="flex gap-2">
-                      <Link href="/contact">
-                        <Button variant="outline" size="sm">
-                          Contact Us
-                        </Button>
-                      </Link>
-                      <Link href="/blog">
-                        <Button variant="outline" size="sm">
-                          More Articles
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </motion.div>
+
+          <Separator className="my-8" />
 
           {/* Tags */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-8"
-          >
-            <div className="flex items-center gap-3 flex-wrap">
-              <Tag className="h-5 w-5 text-muted-foreground" />
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="text-sm">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          </motion.div>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {post.tags.map((tag) => (
+              <Badge key={tag} variant="secondary">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+
+          {/* CTA Section */}
+          <Card className="mb-12 bg-gradient-to-br from-primary/10 to-purple-500/10 border-2">
+            <CardContent className="p-8 text-center">
+              <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Business?</h3>
+              <p className="text-muted-foreground mb-6">
+                Let's discuss how we can help you achieve your technology goals.
+              </p>
+              <div className="flex gap-4 justify-center">
+                <Link href="/booking">
+                  <Button size="lg">Schedule a Consultation</Button>
+                </Link>
+                <Link href="/contact">
+                  <Button size="lg" variant="outline">
+                    Contact Us
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
-          <div className="container mx-auto max-w-7xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold mb-8">Related Articles</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {relatedPosts.map((relatedPost, index) => (
-                  <BlogCard key={relatedPost.slug} post={relatedPost} index={index} />
-                ))}
-              </div>
-            </motion.div>
+        <section className="py-12 bg-muted/30">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold mb-8 text-center">Related Articles</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedPosts.map((relatedPost, index) => (
+                <BlogCard key={relatedPost.slug} post={relatedPost} index={index} />
+              ))}
+            </div>
           </div>
         </section>
       )}
-
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary/5">
-        <div className="container mx-auto max-w-4xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Business?</h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Let's discuss how we can help you achieve your technology goals
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/booking">
-                <Button size="lg">Book a Consultation</Button>
-              </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline">
-                  Contact Us
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   )
 }

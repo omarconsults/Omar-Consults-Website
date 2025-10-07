@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/facebook", "destination": "https://facebook.com/omarbfconsults", "permanent": true },
+    { "source": "/instagram", "destination": "https://www.instagram.com/omarconsults/", "permanent": true },
+    { "source": "/linkedin", "destination": "https://www.linkedin.com/company/omarconsults", "permanent": true },
+    { "source": "/X", "destination": "http://x.com/Omarconsults", "permanent": true }
+  ]
+}
