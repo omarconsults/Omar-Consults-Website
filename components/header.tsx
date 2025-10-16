@@ -106,6 +106,17 @@ export function Header() {
                           href="/services"
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         >
+                          <div className="text-sm font-medium leading-none">Business & Tax Advisory</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Tax compliance, business registration & financial management
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link
+                          href="/services"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
                           <div className="text-sm font-medium leading-none">Digital Marketing</div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             Data-driven marketing strategies for growth

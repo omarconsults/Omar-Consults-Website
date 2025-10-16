@@ -9,6 +9,7 @@ import {
   Code,
   Cloud,
   TrendingUp,
+  Calculator,
   Building2,
   ShoppingCart,
   Heart,
@@ -640,7 +641,7 @@ function IndustryCard({ industry, index }: { industry: any; index: number }) {
   )
 }
 
-// Services data
+// Services data - now includes 5 services
 const services = [
   {
     title: "AI Strategy & Consulting",
@@ -673,6 +674,17 @@ const services = [
       "Infrastructure Optimization",
       "Cloud Security Implementation",
       "24/7 Monitoring & Support",
+    ],
+  },
+  {
+    title: "Business & Tax Advisory",
+    description: "Comprehensive tax compliance and financial management solutions for SMEs and startups.",
+    icon: Calculator,
+    features: [
+      "Tax Compliance & Filing",
+      "Business Registration",
+      "Digital Financial Management",
+      "Tax Planning for SMEs",
     ],
   },
   {

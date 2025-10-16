@@ -1,17 +1,14 @@
 "use client"
 
-import { ArrowRight, CheckCircle, Brain, Code, Cloud, TrendingUp } from "lucide-react"
+import { ArrowRight, CheckCircle, Brain, Code, Cloud, TrendingUp, Calculator } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
-// Removed NavigationMenu imports as it's now in Header component
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header is now in app/layout.tsx */}
-
       {/* Hero Section */}
       <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 bg-gradient-to-br from-purple-900 via-blue-900 to-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -153,8 +150,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer is now in app/layout.tsx */}
     </div>
   )
 }
@@ -221,6 +216,27 @@ const services = [
       "Ongoing monitoring and maintenance",
     ],
     icon: Cloud,
+  },
+  {
+    title: "Business & Tax Advisory",
+    price: "Starting from ₦150,000",
+    description:
+      "Comprehensive tax compliance, business registration, and financial management solutions for SMEs and startups.",
+    features: [
+      "Tax Compliance & Filing",
+      "Business Registration & Structuring",
+      "Digital Financial Management",
+      "Tax Planning for SMEs & Startups",
+    ],
+    included: [
+      "Corporate and personal income tax guidance",
+      "VAT, PAYE, and withholding tax compliance",
+      "CAC registration and restructuring",
+      "Integration of accounting software (QuickBooks, Sage, Zoho Books)",
+      "Cloud-based tax record management",
+      "Strategic tax planning to reduce liability",
+    ],
+    icon: Calculator,
   },
   {
     title: "Digital Marketing",
