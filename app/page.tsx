@@ -9,7 +9,6 @@ import {
   Code,
   Cloud,
   TrendingUp,
-  Calculator,
   Building2,
   ShoppingCart,
   Heart,
@@ -28,6 +27,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { CampaignsSection } from "@/components/campaigns-section"
 import "./styles/animations.css"
 
 export default function Home() {
@@ -210,12 +210,15 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-            {services.map((service, index) => (
+            {services.slice(0, 4).map((service, index) => (
               <ServiceCard key={service.title} service={service} index={index} />
             ))}
           </div>
         </div>
       </section>
+
+      {/* Marketing Campaigns Section */}
+      <CampaignsSection />
 
       {/* Industries Section */}
       <section className="py-16 sm:py-20 md:py-28 bg-gradient-to-br from-[#020817] via-[#1a1f2e] to-[#020817] relative overflow-hidden">
@@ -641,7 +644,7 @@ function IndustryCard({ industry, index }: { industry: any; index: number }) {
   )
 }
 
-// Services data - now includes 5 services
+// Services data - now includes 5 services (showing only 4 on homepage)
 const services = [
   {
     title: "AI Strategy & Consulting",
@@ -674,17 +677,6 @@ const services = [
       "Infrastructure Optimization",
       "Cloud Security Implementation",
       "24/7 Monitoring & Support",
-    ],
-  },
-  {
-    title: "Business & Tax Advisory",
-    description: "Comprehensive tax compliance and financial management solutions for SMEs and startups.",
-    icon: Calculator,
-    features: [
-      "Tax Compliance & Filing",
-      "Business Registration",
-      "Digital Financial Management",
-      "Tax Planning for SMEs",
     ],
   },
   {
