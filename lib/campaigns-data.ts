@@ -10,7 +10,7 @@ export interface Campaign {
   }[]
   image: string
   tags: string[]
-  link?: string
+  caseStudyId?: string
 }
 
 export const campaigns: Campaign[] = [
@@ -26,9 +26,10 @@ export const campaigns: Campaign[] = [
       { label: "Success Rate", value: "95%" },
       { label: "ROI Improvement", value: "3x" },
     ],
-    image: "https://res.cloudinary.com/dqbmouqsb/image/upload/v1760604288/Flyer_-_Digital_Marketing_Services_1_v3oele_uqlylo.webp",
+    image:
+      "https://res.cloudinary.com/dqbmouqsb/image/upload/v1760604288/Flyer_-_Digital_Marketing_Services_1_v3oele_uqlylo.webp",
     tags: ["AI", "Cloud", "Digital Transformation"],
-    link: "/services",
+    caseStudyId: "jaan-digital-transformation",
   },
   {
     id: "sme-tax-compliance",
@@ -44,7 +45,7 @@ export const campaigns: Campaign[] = [
     ],
     image: "https://res.cloudinary.com/dqbmouqsb/image/upload/v1760604805/CAC_Promotion_ycrhno.jpg",
     tags: ["Tax", "Compliance", "SME"],
-    link: "/services",
+    caseStudyId: "gida-drinks-tax-compliance",
   },
   {
     id: "ecommerce-revolution",
@@ -60,7 +61,7 @@ export const campaigns: Campaign[] = [
     ],
     image: "https://res.cloudinary.com/dqbmouqsb/image/upload/v1760604514/gida_drinks_web_e746ib.png",
     tags: ["E-commerce", "Web Development", "Payment Integration"],
-    link: "/services",
+    caseStudyId: "carochi-ecommerce-revolution",
   },
   {
     id: "ai-for-business",
@@ -74,8 +75,9 @@ export const campaigns: Campaign[] = [
       { label: "Efficiency Gain", value: "60%" },
       { label: "Cost Reduction", value: "40%" },
     ],
-    image: "https://res.cloudinary.com/dqbmouqsb/image/upload/v1760605003/515928831_749131987657809_6034845787496430754_n.jpg_gioery.jpg",
+    image:
+      "https://res.cloudinary.com/dqbmouqsb/image/upload/v1760605003/515928831_749131987657809_6034845787496430754_n.jpg_gioery.jpg",
     tags: ["AI", "Automation", "Machine Learning"],
-    link: "/services",
+    caseStudyId: "pollo24-ai-automation",
   },
 ]

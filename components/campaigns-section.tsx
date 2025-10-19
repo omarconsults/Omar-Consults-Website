@@ -41,7 +41,6 @@ export function CampaignsSection() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-primary via-purple-500 to-blue-500 bg-clip-text text-transparent">
               Our Marketing Campaigns
             </h2>
-            
           </motion.div>
         </div>
 
@@ -59,6 +58,12 @@ export function CampaignsSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-center mt-12 sm:mt-16"
         >
+          <Link href="/case-studies">
+            <Button variant="outline" className="mr-4 bg-transparent">
+              View All Case Studies
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
           <Link href="/booking">
             <Button size="lg" className="group">
               Join Our Next Campaign
@@ -135,15 +140,23 @@ function CampaignCard({ campaign, index, isInView }: { campaign: any; index: num
             ))}
           </div>
 
-          {/* CTA Button */}
-          {campaign.link && (
-            <Link href={campaign.link} className="block">
-              <Button variant="ghost" className="w-full group/btn">
-                Learn More
+          {/* CTA Buttons */}
+          <div className="flex gap-2 flex-col sm:flex-row">
+            {campaign.caseStudyId && (
+              <Link href={`/case-studies/${campaign.caseStudyId}`} className="flex-1">
+                <Button variant="outline" className="w-full group/btn bg-transparent">
+                  View Case Study
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            )}
+            <Link href="/booking" className="flex-1">
+              <Button className="w-full group/btn">
+                Get Started
                 <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
               </Button>
             </Link>
-          )}
+          </div>
         </CardContent>
       </Card>
     </motion.div>

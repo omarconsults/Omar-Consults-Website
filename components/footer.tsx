@@ -106,6 +106,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/tools-resources"
+                  className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Tools & Resources
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/contact"
                   className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
