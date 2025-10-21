@@ -58,7 +58,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">Location</h3>
-                        <p className="text-muted-foreground">GRA Benin City, Edo, Nigeria</p>
+                        <p className="text-muted-foreground">GRA Benin City, Edo State Nigeria</p>
                       </div>
                     </div>
 

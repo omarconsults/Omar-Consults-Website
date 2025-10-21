@@ -308,7 +308,7 @@ export default function Home() {
 
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="bg-gradient-to-br from-primary/10 to-purple-500/10 p-4 sm:p-6 rounded-xl border border-primary/20">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-primary">10+</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-primary">5+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Years Experience</div>
                 </div>
                 <div className="bg-gradient-to-br from-blue-500/10 to-primary/10 p-4 sm:p-6 rounded-xl border border-blue-500/20">

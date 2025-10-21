@@ -47,9 +47,7 @@ export default function AboutPage() {
                 effectively, not because they lack ambition, but because they need the right guidance and expertise.
               </p>
               <p className="text-base sm:text-lg text-muted-foreground">
-                Starting as a small consulting firm in Benin City, we've grown into a trusted partner for businesses
-                across Nigeria and beyond. Our journey has been marked by continuous learning, adaptation, and an
-                unwavering commitment to our clients' success.
+                Starting as a small consulting firm we&#39;ve grown into a trusted partner for businesses across Nigeria and beyond. Our journey has been marked by continuous learning, adaptation, and an unwavering commitment to our clients&#39; success.
               </p>
               <p className="text-base sm:text-lg text-muted-foreground">
                 Today, we're proud to be at the forefront of digital transformation, helping businesses harness the

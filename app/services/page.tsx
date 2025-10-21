@@ -157,7 +157,7 @@ export default function ServicesPage() {
 const services = [
   {
     title: "AI Strategy & Consulting",
-    price: "Starting from $999",
+    price: "Starting from $700",
     description:
       "Transform your business with cutting-edge AI solutions tailored to your specific needs and industry requirements.",
     features: [
@@ -178,7 +178,7 @@ const services = [
   },
   {
     title: "Custom Software Development",
-    price: "Starting from ₦800,000",
+    price: "Starting from ₦500,000",
     description:
       "Build scalable and efficient software solutions that drive your business forward with modern technologies.",
     features: [
@@ -219,7 +219,7 @@ const services = [
   },
   {
     title: "Business & Tax Advisory",
-    price: "Starting from ₦150,000",
+    price: "Starting from ₦50,000",
     description:
       "Comprehensive tax compliance, business registration, and financial management solutions for SMEs and startups.",
     features: [

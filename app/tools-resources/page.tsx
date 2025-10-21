@@ -419,12 +419,6 @@ export default function ToolsResourcesPage() {
               Access free tools, calculators, and resources to assess your business needs, explore AI capabilities, and
               make informed decisions about your digital transformation journey.
             </p>
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 w-full sm:w-auto touch-manipulation active:scale-[0.98]"
-            >
-              Start Your Next Campaign <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
           </div>
         </div>
       </section>
@@ -1380,25 +1374,15 @@ export default function ToolsResourcesPage() {
               Start using our tools today and take the first step toward digital transformation. Our team is ready to
               support you on your journey.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="bg-white text-primary hover:bg-white/90 text-sm sm:text-base touch-manipulation active:scale-[0.98] w-full sm:w-auto"
-                onClick={() => router.push("/booking")}
-              >
-                Book a Consultation
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10 bg-transparent text-sm sm:text-base touch-manipulation active:scale-[0.98] w-full sm:w-auto"
-              >
-                Explore More Tools
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="bg-white text-primary hover:bg-white/90 text-sm sm:text-base touch-manipulation active:scale-[0.98]"
+              onClick={() => router.push("/booking")}
+            >
+              Book a Consultation
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
         </div>
       </section>

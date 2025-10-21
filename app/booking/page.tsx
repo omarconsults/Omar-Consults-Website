@@ -360,6 +360,11 @@ const services = [
     name: "Digital Marketing",
     description: "Strategic campaigns to boost your online visibility",
   },
+  {
+    id: "business-tax-advisory",
+    name: "Business & Tax Advisory",
+    description: "Expert guidance on business strategy and tax optimization",
+  },
 ]
 
 const benefits = [

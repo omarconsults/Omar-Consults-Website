@@ -190,9 +190,10 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t text-center text-xs sm:text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Omar Consults. All rights reserved.</p>
-        </div>
+        <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t text-center text-xs sm:text-sm text-muted-foreground space-y-2">
+  <p>&copy; {new Date().getFullYear()} Omar Consults. All rights reserved.</p>
+  <p>POWERED BY <a href="https://www.omarconsults.ng/about" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors underline">INNOVATION</a></p>
+</div>
       </div>
     </footer>
   )
