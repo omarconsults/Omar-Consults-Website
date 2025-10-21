@@ -1374,15 +1374,6 @@ export default function ToolsResourcesPage() {
               Start using our tools today and take the first step toward digital transformation. Our team is ready to
               support you on your journey.
             </p>
-            <Button
-              size="lg"
-              variant="secondary"
-              className="bg-white text-primary hover:bg-white/90 text-sm sm:text-base touch-manipulation active:scale-[0.98]"
-              onClick={() => router.push("/booking")}
-            >
-              Book a Consultation
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
           </div>
         </div>
       </section>
